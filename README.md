@@ -6,4 +6,4 @@
 - Seperate a stratified test data set from the whole dataset by running the createStratifiedTestDataset.ipynb script.
 - Run the dataVisualization.ipynb script to visualize the training and testing datasets and confirm stratification.
 - Run the runModels.ipynb script to train and create the test data for each model group.
-- Run the STAT.ipynb for statistical calculations and graphing the MAE for each model group.
+- Run the statisticalCalculations.ipynb for statistical calculations and graphing the MAE for each model group.
