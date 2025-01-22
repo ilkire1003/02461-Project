@@ -119,19 +119,23 @@ train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
 # %% Neural network
 
 net = torch.nn.Sequential(
-    torch.nn.Conv2d(3, 32, kernel_size=5),  # b x 32 x 124 x 124
+    torch.nn.Conv2d(3, 32, kernel_size=5),  # b x 32 x 96 x 96
     torch.nn.ReLU(),
-    torch.nn.MaxPool2d(kernel_size=2),  # b x 32 x 62 x 62
-    torch.nn.Conv2d(32, 64, kernel_size=3),  # b x 64 x 60 x 60
+    torch.nn.MaxPool2d(kernel_size=2),  # b x 32 x 48 x 48
+    
+    torch.nn.Conv2d(32, 64, kernel_size=3),  # b x 64 x 46 x 46
     torch.nn.ReLU(),
-    torch.nn.MaxPool2d(kernel_size=2),  # b x 64 x 30 x 30
-    torch.nn.Conv2d(64, 128, kernel_size=3),  # b x 128 x 28 x 28
+    torch.nn.MaxPool2d(kernel_size=2),  # b x 64 x 23 x 23
+    
+    torch.nn.Conv2d(64, 128, kernel_size=3),  # b x 128 x 21 x 21
     torch.nn.ReLU(),
-    torch.nn.MaxPool2d(kernel_size=2),  # b x 128 x 14 x 14
-    torch.nn.Conv2d(128, 256, kernel_size=3),  # b x 256 x 12 x 12
+    torch.nn.MaxPool2d(kernel_size=2),  # b x 128 x 10 x 10
+    
+    torch.nn.Conv2d(128, 256, kernel_size=3),  # b x 256 x 8 x 8
     torch.nn.ReLU(),
-    torch.nn.MaxPool2d(kernel_size=2),  # b x 256 x 6 x 6
-    torch.nn.Flatten(),  # 256 x 6 x 6 = 9.216
+    torch.nn.MaxPool2d(kernel_size=2),  # b x 256 x 4 x 4
+    
+    torch.nn.Flatten(),  # 256 x 4 x 4 = 4096
     torch.nn.Linear(4096, 1),  # 1
     torch.nn.Sigmoid(),
 ).to(device)
